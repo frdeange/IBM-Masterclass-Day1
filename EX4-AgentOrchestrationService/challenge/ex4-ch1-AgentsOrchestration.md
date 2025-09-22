@@ -73,18 +73,12 @@ Transform your independent agents into a coordinated system where:
 
 **Perfect for learning agent orchestration fundamentals!**
 
-- [ ] ✅ **Reuse Your EX3-CH4 Agents**: Code Analyst, GitHub Explorer, Documentation Expert
-- [ ] ✅ **Create ConnectedAgentTool**: Wrap each agent as a connected tool
-- [ ] ✅ **Master Coordinator Agent**: Create an agent that orchestrates all three
-- [ ] ✅ **Single Query Workflow**: One user input activates the entire analysis chain
-- [ ] ✅ **Combined Output**: Display the final result of the 3 agents' work
-
-</div>
-
-### 🌟 **Advanced Level (Extra 10 minutes for fast finishers)** ⭐ BONUS
-
-<div style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 10px 0;">
-
+- [ ] ✅ **Reuse Your EX3-CH4 Agents**: Code Analyst (FunctionTool), GitHub Explorer (OpenApiTool + Structured Output), Documentation Expert (McpTool)
+- [ ] ✅ **Apply Structured Output**: GitHub Explorer returns JSON structured data for better integration
+- [ ] ✅ **Create ConnectedAgentTool**: Wrap each agent as a connected tool for orchestration
+- [ ] ✅ **Master Coordinator Agent**: Create an agent that orchestrates all three specialists intelligently
+- [ ] ✅ **Single Query Workflow**: One user input activates the entire analysis chain automatically
+- [ ] ✅ **Combined Output**: Display comprehensive results combining all specialist agents' insights
 
 </div>
 
@@ -99,14 +93,19 @@ Transform your independent agents into a coordinated system where:
 
 **Agents to Copy from EX3-CH4:**
 
-- **Code Analyst Agent**: With FunctionTool and `analyze_code_metrics` function
-- **GitHub Explorer Agent**: With OpenApiTool for GitHub API access
-- **Documentation Expert Agent**: With McpTool for Microsoft Learn access
+- **Code Analyst Agent**: With FunctionTool and `analyze_code_metrics` function (basic analysis)
+- **GitHub Explorer Agent**: With OpenApiTool for GitHub API access + **Structured Output** (Pydantic models for JSON responses)
+- **Documentation Expert Agent**: With McpTool for Microsoft Learn access (real documentation search)
+
+**Key Enhancement - Structured Output:**
+- GitHub Explorer now returns structured JSON data using Pydantic models
+- This enables better integration with Code Analyst for repository analysis
+- Follow the pattern from EX3-S4 sample for structured output implementation
 
 **Key Changes for Orchestration:**
-- Same agent definitions, but now used as ConnectedAgentTool
-- No need to modify the original agent logic
-- Focus on the orchestration layer, not individual agent functionality
+- Same agent definitions, enhanced with structured output capability
+- Wrapped as ConnectedAgentTool for orchestration communication
+- Master agent coordinates the workflow automatically
 
 </details>
 
@@ -141,33 +140,37 @@ master_agent = agents_client.create_agent(
 <details>
 <summary>🚀 <strong>Test Queries to Try</strong></summary>
 
-**Simple Development Queries:**
-- "Analyze Python machine learning projects"
-- "Find information about Azure Functions development"  
-- "Evaluate REST API development tools"
+**Test Queries for Orchestration:**
+- "Analyze Python machine learning frameworks" (tests GitHub search + code analysis + docs)
+- "Find information about Azure Functions development" (tests docs + GitHub examples)
+- "Evaluate Chainlit with Azure OpenAI integration" (tests all three agents coordination)
 
-**Advanced Queries:**
+**Advanced Orchestration Queries:**
 - "I want to learn containerization - find popular Docker projects and official documentation"
 - "Help me understand microservices architecture with real examples and Microsoft guidance"
+- "Compare different Python AI frameworks with their complexity and official support"
 
 </details>
 
 ## 🔧 **Implementation Guide**
 
-### **Step 1: Prepare Your Foundation**
-Copy your three specialized agents from EX3 Challenge 4 solution exactly as they are.
+### **Step 1: Prepare Your Enhanced Foundation**
+Copy your three specialized agents from EX3 Challenge 4, ensuring GitHub Explorer has structured output capability.
 
-### **Step 2: Create Connected Tools**
+### **Step 2: Import Required Dependencies**
+Add necessary imports for orchestration: ConnectedAgentTool, structured output models, and all tool types.
+
+### **Step 3: Create Connected Tools**
 Wrap each specialist agent with ConnectedAgentTool, following the pattern from the EX4-S1 sample.
 
-### **Step 3: Build the Master Agent**
-Create a coordinator agent that uses all three connected tools and knows how to orchestrate them.
+### **Step 4: Build the Master Agent**
+Create a coordinator agent that uses all three connected tools and understands their specialized capabilities.
 
-### **Step 4: Implement Single-Query Workflow**
-Use `create_and_process()` method to handle the entire orchestration automatically.
+### **Step 5: Implement Single-Query Workflow**
+Use `create_and_process()` method to handle the entire orchestration automatically with proper error handling.
 
-### **Step 5: Test the Orchestration**
-Verify that a single user query activates all relevant specialists and produces combined results.
+### **Step 6: Test the Complete Orchestration**
+Verify that a single user query activates all relevant specialists and produces comprehensive, integrated results.
 
 ---
 
@@ -175,12 +178,12 @@ Verify that a single user query activates all relevant specialists and produces 
 
 ### ✅ **You'll know you've succeeded when:**
 
-**Basic Level:**
-- Single user query automatically activates multiple specialist agents
-- ConnectedAgentTool enables seamless agent-to-agent communication
-- Master agent coordinates the workflow without manual intervention
-- Output combines insights from Code Analyst, GitHub Explorer, and Documentation Expert
-- The orchestration follows the EX4-S1 sample pattern successfully
+- Single user query automatically activates multiple specialist agents with their enhanced capabilities
+- ConnectedAgentTool enables seamless agent-to-agent communication and data passing
+- Master agent coordinates the workflow intelligently without manual intervention
+- GitHub Explorer provides structured JSON data that integrates smoothly with Code Analyst
+- Output combines insights from all specialists: structured repository data + analysis + documentation
+- The orchestration follows the EX4-S1 sample pattern with enhanced agent capabilities
 
 ---
 
