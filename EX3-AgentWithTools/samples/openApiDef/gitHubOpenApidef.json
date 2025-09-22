@@ -1,0 +1,71 @@
+{
+    "openapi": "3.0.0",
+    "info": {"title": "GitHub REST API", "version": "1.0.0"},
+    "servers": [{"url": "https://api.github.com"}],
+    "paths": {
+        "/search/repositories": {
+            "get": {
+                "operationId": "searchRepositories",
+                "summary": "Search repositories",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query", 
+                        "required": true,
+                        "schema": {"type": "string"},
+                        "description": "Search query (e.g., 'chainlit azure openai')"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "schema": {"type": "string", "enum": ["stars", "forks", "updated"]},
+                        "description": "Sort by stars, forks, or updated date"
+                    },
+                    {
+                        "name": "order", 
+                        "in": "query",
+                        "schema": {"type": "string", "enum": ["asc", "desc"]},
+                        "description": "Sort order"
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "schema": {"type": "integer", "minimum": 1, "maximum": 100},
+                        "description": "Number of results per page (max 100)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Repository search results",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {"type": "string"},
+                                                    "full_name": {"type": "string"},
+                                                    "description": {"type": "string"},
+                                                    "language": {"type": "string"},
+                                                    "stargazers_count": {"type": "integer"},
+                                                    "forks_count": {"type": "integer"},
+                                                    "size": {"type": "integer"},
+                                                    "open_issues_count": {"type": "integer"},
+                                                    "html_url": {"type": "string"}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

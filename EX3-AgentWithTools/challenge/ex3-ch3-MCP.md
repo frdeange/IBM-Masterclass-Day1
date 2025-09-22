@@ -1,12 +1,12 @@
-# 🔗 Challenge 3: Connecting to External Tools with MCP
+# 📚 Challenge 3: Microsoft Learn Documentation Agent
 
 <div align="center">
 
 ![Challenge 3](https://img.shields.io/badge/Challenge-3-blue?style=for-the-badge)
-![Difficulty](https://img.shields.io/badge/Difficulty-Intermediate-yellow?style=for-the-badge)
-![Time](https://img.shields.io/badge/Time-25%20minutes-orange?style=for-the-badge)
+![Difficulty](https://img.shields.io/badge/Difficulty-Beginner-green?style=for-the-badge)
+![Time](https://img.shields.io/badge/Time-20%20minutes-orange?style=for-the-badge)
 
-**Connect your AI agent to external tools and services using Model Context Protocol!**
+**Connect your AI agent to Microsoft Learn documentation using MCP!**
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## 🎯 **Objective**
 
-Transform the `ex3-s3-AgentWithMCP.py` example into a versatile agent that can connect to different external tools and data sources. Learn how to expand your AI agent's capabilities beyond custom functions by integrating with real external services!
+Transform the `ex3-s3-AgentWithMCP.py` example into a specialized documentation assistant that connects to Microsoft Learn through the Model Context Protocol. Learn how to integrate external knowledge sources to enhance your AI agent's capabilities!
 
 ## ✨ **What You'll Learn**
 
@@ -24,18 +24,18 @@ Transform the `ex3-s3-AgentWithMCP.py` example into a versatile agent that can c
 
 ### 🔄 **Core Skills**
 - Model Context Protocol (MCP) integration
-- External tool configuration and approval
-- Managing agent-tool interactions
-- Working with different data sources
+- Microsoft Learn MCP server configuration
+- External documentation access
+- Real-time knowledge retrieval
 
 </td>
 <td>
 
 ### 🧠 **AI Concepts**  
-- Tool orchestration and coordination
-- External service integration patterns
-- Security and approval workflows
-- Scalable agent architecture
+- Knowledge augmentation patterns
+- External service integration
+- Documentation-driven assistance
+- Preparing for multi-agent systems
 
 </td>
 </tr>
@@ -45,19 +45,18 @@ Transform the `ex3-s3-AgentWithMCP.py` example into a versatile agent that can c
 
 ## 📝 **Challenge Description**
 
-Based on the example `ex3-s3-AgentWithMCP.py`, create an agent that can connect to multiple external tools and handle various data analysis tasks:
+Based on the example `ex3-s3-AgentWithMCP.py`, create a documentation assistant that connects to Microsoft Learn's official MCP server to provide up-to-date technical guidance:
 
 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin: 15px 0; color: white;">
 
 ### 🎯 **Your Mission**
 
-1. **📊 Connect to GitHub repositories** for code analysis and documentation
-2. **🔍 Explore different MCP servers** to understand available tools
-3. **📝 Create interactive queries** that utilize external data sources
-4. **⚙️ Handle tool approvals** and security considerations
-5. **🎛️ Build a multi-tool workflow** that combines different external services
+1. **🔗 Connect to Microsoft Learn MCP** - Configure your agent to use the official Microsoft Learn MCP server
+2. **📖 Create a documentation expert** - Build an agent that can answer technical questions using real documentation
+3. **🧪 Test with real queries** - Ask complex questions about Azure, .NET, Python, and other Microsoft technologies
+4. **🚀 Prepare for orchestration** - This agent will be one of three in the next challenge!
 
-**🌟 Goal**: Create an agent that can seamlessly work with external tools to provide rich, data-driven responses!
+**🌟 Special Note**: You'll be connecting to Microsoft's **official MCP server** with live documentation!
 
 </div>
 
@@ -65,29 +64,28 @@ Based on the example `ex3-s3-AgentWithMCP.py`, create an agent that can connect 
 
 ## 📋 **Technical Requirements**
 
-### 🥇 **Basic Level (20-25 minutes)** ✅ MAIN GOAL
+### 🥇 **Basic Level (15-20 minutes)** ✅ MAIN GOAL
 
 <div style="background: #d4edda; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; margin: 10px 0;">
 
-**Perfect for learning MCP fundamentals!**
+**Perfect for getting started with MCP integration!**
 
-- [ ] ✅ **GitHub Repository Connection**: Successfully connect to a GitHub repo using MCP
-- [ ] ✅ **Documentation Analysis**: Ask the agent to summarize README files or documentation
-- [ ] ✅ **Code Exploration**: Request information about specific files or project structure
-- [ ] ✅ **Tool Approval Handling**: Understand and manage the approval workflow
+- [ ] ✅ **Configure Microsoft Learn MCP** server at `https://learn.microsoft.com/api/mcp`
+- [ ] ✅ **Create a documentation agent** with clear instructions for technical guidance
+- [ ] ✅ **Test documentation queries** - Ask about Azure services, .NET concepts, or Python libraries
+- [ ] ✅ **Handle approval workflow** - Successfully approve tool calls and get responses
 
 </div>
 
-### 🌟 **Advanced Level (Extra 10 minutes for fast finishers)** ⭐ BONUS
+### 🌟 **Advanced Level (Extra 5 minutes for fast finishers)** ⭐ BONUS
 
 <div style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 10px 0;">
 
-**For those who want to explore multiple tools!**
+**For those who finish early and want extra functionality!**
 
-- [ ] 🔥 **Multiple Repository Analysis**: Compare different GitHub repositories
-- [ ] 🔥 **Custom Headers Configuration**: Set up authentication headers for private repos
-- [ ] 🔥 **Error Handling**: Gracefully handle connection failures and tool errors
-- [ ] 🔥 **Workflow Automation**: Create a multi-step analysis using different tools
+- [ ] 🔥 **Multi-question conversation** - Ask follow-up questions in the same thread
+- [ ] 🔥 **Specific technology focus** - Test with complex Azure AI or ML questions
+- [ ] 🔥 **Error handling** - Test what happens when documentation isn't found
 
 </div>
 
@@ -98,230 +96,131 @@ Based on the example `ex3-s3-AgentWithMCP.py`, create an agent that can connect 
 ### 🟢 **Basic Level Implementation**
 
 <details>
-<summary>🔍 <strong>Click to see MCP server options</strong></summary>
+<summary>🔍 <strong>Click to see MCP configuration</strong></summary>
 
 ```python
-# Different MCP servers you can try:
-github_servers = {
-    "azure_specs": "https://gitmcp.io/Azure/azure-rest-api-specs",
-    "microsoft_docs": "https://gitmcp.io/MicrosoftDocs/azure-docs", 
-    "pytorch": "https://gitmcp.io/pytorch/pytorch",
-    "tensorflow": "https://gitmcp.io/tensorflow/tensorflow",
-    "react": "https://gitmcp.io/facebook/react"
-}
+# Update the MCP server configuration
+mcp_server_url = "https://learn.microsoft.com/api/mcp"
+mcp_server_label = "microsoft_learn"
 
-# Server labels for easy reference
-server_labels = {
-    "azure": "azure-specs",
-    "docs": "microsoft-docs", 
-    "pytorch": "pytorch-ml",
-    "tensorflow": "tensorflow-ml",
-    "react": "react-ui"
-}
+# Initialize agent MCP tool
+mcp_tool = McpTool(
+    server_label=mcp_server_label,
+    server_url=mcp_server_url,
+    allowed_tools=[],  # Let it use all available tools
+)
 ```
 
 </details>
 
 <details>
-<summary>🎯 <strong>Sample Questions to Try</strong></summary>
+<summary>🤖 <strong>Click to see agent instructions</strong></summary>
 
-**Basic Repository Analysis:**
-- "Can you summarize the main README file for this repository?"
-- "What is the purpose and main features of this project?"
-- "List the main directories and their purposes"
-- "What programming languages are used in this project?"
-
-**Code Exploration:**
-- "Find examples of how to use the main API"
-- "What are the key configuration files in this repository?"
-- "Show me the project's contributing guidelines"
-- "What dependencies does this project have?"
+```python
+agent = agents_client.create_agent(
+    model=azure_foundry_deployment,
+    name="Microsoft Learn Documentation Assistant",
+    instructions="""You are a specialized documentation assistant that helps developers find ............. (describe it!).""",
+    tools=mcp_tool.definitions,
+)
+```
 
 </details>
 
 <details>
-<summary>🚀 <strong>Tool Configuration Examples</strong></summary>
+<summary>💬 <strong>Click to see example questions</strong></summary>
 
 ```python
-# Basic MCP tool setup
-def setup_mcp_tool(server_url, label):
-    mcp_tool = McpTool(
-        server_label=label,
-        server_url=server_url,
-        allowed_tools=[],  # Allow all tools or specify specific ones
-    )
-    return mcp_tool
-
-# Advanced configuration with headers
-def setup_authenticated_mcp_tool(server_url, label, auth_token):
-    mcp_tool = McpTool(
-        server_label=label,
-        server_url=server_url,
-        allowed_tools=[],
-    )
-    mcp_tool.update_headers("Authorization", f"Bearer {auth_token}")
-    return mcp_tool
+# Test these types of questions:
+test_questions = [
+    "How do I create an Azure OpenAI service and connect to it with Python?",
+    "What are the best practices for using Azure AI Services?", 
+    "How do I implement authentication in a .NET Core web API?",
+    "What's the difference between Azure Functions and Azure Container Apps?",
+    "How do I use Azure Cognitive Search with semantic search?"
+]
 ```
 
 </details>
 
 ---
 
-### 🟡 **Advanced Level Implementation**
+## 🧪 **Testing Your Agent**
 
-<details>
-<summary>⚡ <strong>Multi-Repository Analysis</strong></summary>
+### 📝 **Sample Conversation**
 
-```python
-# Function to switch between different repositories
-def analyze_multiple_repos(repos_config):
-    """
-    Analyze multiple repositories and compare them
-    
-    :param repos_config: Dictionary with repo URLs and labels
-    """
-    results = {}
-    for repo_name, config in repos_config.items():
-        # Set up MCP tool for each repository
-        mcp_tool = setup_mcp_tool(config['url'], config['label'])
-        # Perform analysis...
-        results[repo_name] = analyze_repository(mcp_tool)
-    return results
+Try asking your agent questions like:
 
-# Example configuration
-repos_to_compare = {
-    "pytorch": {
-        "url": "https://gitmcp.io/pytorch/pytorch",
-        "label": "pytorch-ml"
-    },
-    "tensorflow": {
-        "url": "https://gitmcp.io/tensorflow/tensorflow", 
-        "label": "tensorflow-ml"
-    }
-}
+```
+"I'm building a Python application that needs to use Azure OpenAI. 
+Can you help me understand how to set up authentication and make my first API call?"
 ```
 
-</details>
+### ✅ **Success Criteria**
+
+Your agent should:
+- Successfully connect to Microsoft Learn MCP
+- Retrieve relevant documentation
+- Provide accurate, actionable guidance
+- Handle the approval workflow smoothly
+
+---
+
+## 🎯 **What's Next?**
+
+This documentation agent will become **one of three specialized agents** in Challenge 4, where you'll learn to orchestrate multiple agents working together! 
+
+Perfect preparation for building complex AI systems! 🚀
+
+---
+
+## 🔧 **Common Issues & Solutions**
 
 <details>
-<summary>🔥 <strong>Advanced Analysis Workflows</strong></summary>
+<summary>❌ <strong>MCP Connection Issues</strong></summary>
 
-**Complex Multi-Step Analysis:**
-- "Compare the README files of PyTorch and TensorFlow repositories"
-- "Find all the configuration files across different repositories and summarize their purposes"
-- "Analyze the project structure differences between React and similar UI frameworks"
-- "Create a comparison report of documentation quality across multiple projects"
-
-</details>
-
----
-
-## 🔧 **Implementation Guide**
-
-### **Step 1: Choose Your Repository**
-Start with a well-documented repository like Azure specs or Microsoft docs for easier analysis.
-
-### **Step 2: Set Up MCP Connection**
-Configure the MCP tool with the repository URL and appropriate label.
-
-### **Step 3: Test Basic Queries**
-Start with simple questions about README files and project structure.
-
-### **Step 4: Handle Approvals**
-Understand the tool approval workflow and how to manage it programmatically.
-
-### **Step 5: Expand to Multiple Tools**
-Once comfortable, try connecting to different repositories and comparing results.
-
----
-
-## 🎯 **Success Criteria**
-
-### ✅ **You'll know you've succeeded when:**
-
-**Basic Level:**
-- Your agent can successfully connect to GitHub repositories via MCP
-- Tool approval workflow works correctly
-- Agent can answer questions about repository structure and documentation
-- Error handling provides meaningful feedback
-
-**Advanced Level:**
-- Multiple repository connections work seamlessly
-- Complex multi-step analyses complete successfully
-- Custom authentication and headers are properly configured
-- Your agent can compare and contrast different projects
-
----
-
-## 🆘 **Common Issues & Solutions**
-
-<details>
-<summary>❗ <strong>MCP Connection Failures</strong></summary>
-
-**Problem**: Agent can't connect to MCP server
-
-**Solutions**:
-- Verify the server URL is correct and accessible
-- Check internet connectivity
-- Ensure the MCP server is currently available
-- Try a different repository if one is down
+- **Problem**: Cannot connect to MCP server
+- **Solution**: Verify the URL is exactly `https://learn.microsoft.com/api/mcp`
+- **Check**: Ensure your network allows HTTPS connections
 
 </details>
 
 <details>
-<summary>❗ <strong>Tool Approval Issues</strong></summary>
+<summary>⏳ <strong>Approval Workflow Problems</strong></summary>
 
-**Problem**: Tool calls are not being approved properly
-
-**Solutions**:
-- Check the approval workflow in your code
-- Ensure `ToolApproval` objects are created correctly
-- Verify headers are set if authentication is required
-- Consider using `set_approval_mode("never")` for testing
+- **Problem**: Tool calls not getting approved
+- **Solution**: Make sure you're handling the `requires_action` status properly
+- **Check**: Verify `ToolApproval` objects are created correctly
 
 </details>
 
 <details>
-<summary>❗ <strong>No Tool Responses</strong></summary>
+<summary>🔍 <strong>No Documentation Found</strong></summary>
 
-**Problem**: Agent doesn't receive responses from external tools
-
-**Solutions**:
-- Check if `allowed_tools` list is too restrictive
-- Verify the tool call format matches expected parameters
-- Ensure proper error handling for failed tool calls
-- Check the run status and error messages
+- **Problem**: Agent says it can't find information
+- **Solution**: Try rephrasing your question with more specific Microsoft technology terms
+- **Tip**: Use terms like "Azure", ".NET", "Microsoft Graph", etc.
 
 </details>
 
 ---
 
-## 🏆 **Bonus Challenges**
+## 🏆 **Completion Checklist**
 
-If you finish everything and want more:
-
-1. **🔐 Authentication Mastery**: Set up connections to private repositories using proper authentication
-2. **📊 Data Visualization**: Create summaries and reports from multiple repository analyses
-3. **🎯 Smart Filtering**: Configure specific tools for different types of analysis
-4. **🔄 Dynamic Switching**: Allow users to switch between different repositories in the same conversation
-
----
-
-## 📚 **Key Learning Outcomes**
-
-By completing this challenge, you'll understand:
-
-- How Model Context Protocol (MCP) extends AI agent capabilities
-- Best practices for external tool integration and security
-- How to handle asynchronous tool approvals and workflows
-- The power of connecting AI agents to real-world data sources
-
-**🎉 Ready to connect your agent to the wider world? Let's build something amazing!**
+- [ ] ✅ MCP server configured correctly
+- [ ] ✅ Agent created with appropriate instructions  
+- [ ] ✅ Successfully asked at least 3 technical questions
+- [ ] ✅ Received helpful documentation-based responses
+- [ ] ✅ Understood the approval workflow
+- [ ] ✅ Ready for multi-agent orchestration in Challenge 4!
 
 ---
 
 <div align="center">
 
-**💡 Remember**: MCP opens up infinite possibilities - start with simple queries and gradually build more complex workflows!
+**🎉 Congratulations!**  
+You've built a powerful documentation assistant that can access live Microsoft Learn content!
+
+**Next up**: Challenge 4 - Multi-Agent System! 🚀
 
 </div>

@@ -75,15 +75,6 @@ with project_client:
         time.sleep(1)
         run = project_client.agents.runs.get(thread_id=thread.id, run_id=run.id)
 
-        if run.status == "requires_action":
-            tool_calls = run.required_action.submit_tool_outputs.tool_calls
-            tool_outputs = []
-            for tool_call in tool_calls:
-                if tool_call.function.name == "fetch_weather":
-                    output = fetch_weather("Barcelona")
-                    tool_outputs.append({"tool_call_id": tool_call.id, "output": output})
-            project_client.agents.runs.submit_tool_outputs(thread_id=thread.id, run_id=run.id, tool_outputs=tool_outputs)
-
     print(f"Run completed with status: {run.status}")
 
     # Fetch and log all messages from the thread

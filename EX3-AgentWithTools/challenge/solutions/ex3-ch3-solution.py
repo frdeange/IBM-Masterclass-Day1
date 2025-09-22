@@ -19,8 +19,8 @@ azure_foundry_project_endpoint = os.getenv("AI_FOUNDRY_ENDPOINT")
 azure_foundry_deployment = os.getenv("AI_FOUNDRY_DEPLOYMENT_NAME")
 
 # Get MCP server configuration from environment variables or Fixed values
-mcp_server_url = "https://gitmcp.io/Azure/azure-rest-api-specs"
-mcp_server_label = "github"
+mcp_server_url = "https://learn.microsoft.com/api/mcp"
+mcp_server_label = "MicrosoftLean"
 
 project_client = AIProjectClient(
     endpoint=azure_foundry_project_endpoint,
@@ -41,7 +41,7 @@ with project_client:
     # NOTE: To reuse existing agent, fetch it with get_agent(agent_id)
     agent = agents_client.create_agent(
         model=azure_foundry_deployment,
-        name="Agent With MCP Tools",
+        name="Microsoft Learn Agent",
         instructions="You are a helpful agent that can use MCP tools to assist users. Use the available MCP tools to answer questions and perform tasks.",
         tools=mcp_tool.definitions,
     )
@@ -57,7 +57,7 @@ with project_client:
     message = agents_client.messages.create(
         thread_id=thread.id,
         role="user",
-        content="Please summarize the Azure REST API specifications Readme",
+        content="Please help me find Microsoft Learn documentation on Azure Functions and provide code examples.",
     )
     print(f"Created message, ID: {message.id}")
     # Create and process agent run in thread with MCP tools
